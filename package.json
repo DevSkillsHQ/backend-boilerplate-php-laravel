@@ -1,9 +1,10 @@
 {
   "name": "account-management-backend-level-3",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
-    "build": "echo build your app here",
-    "start": "echo start your app here",
+    "build": "cd app && composer install",
+    "start": "php artisan serve",
     "test": "cypress run"
   },
   "devDependencies": {
