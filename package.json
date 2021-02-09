@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "build": "sudo apt-get install php-sqlite3 -y && cd app && touch database/database.sqlite && composer install",
-    "start": "cd app && php artisan migrate && php artisan serve",
-    "test": "npm run refresh && cypress run",
-    "refresh": "cd app && php artisan migrate:refresh"
+    "build": "composer install",
+    "start": "cd app && php artisan serve",
+    "test": "cypress run"
   },
   "devDependencies": {
     "cypress": "^5.4.0"
