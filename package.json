@@ -1,7 +1,6 @@
 {
-  "name": "account-management-backend-level-3",
+  "name": "backend-boilerplate",
   "version": "0.0.1",
-  "license": "MIT",
   "scripts": {
     "build": "cd app && composer install",
     "start": "cd app && php artisan serve",
