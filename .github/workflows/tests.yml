@@ -20,16 +20,19 @@ jobs:
           build: npm run build
           start: npm run start
           wait-on: ${{ steps.fetchApiUrl.outputs.apiUrl }}
-      - name: Set repo env var
+      - name: Set result_url env var
+        if: always()
+        run: echo "result_url=http://mockbin.com/request" >> $GITHUB_ENV
+      - name: Set github_repo env var
         if: always()
         run: echo "github_repo=$GITHUB_REPOSITORY" >> $GITHUB_ENV
       - uses: joelwmale/webhook-action@master
         if: failure()
         with:
-          url: https://app.devskills.co/api/assignment-status
+          url: ${{ env.result_url }}
           body: '{"assignmentRepository": "${{ env.github_repo }}","status": "failed"}'
       - uses: joelwmale/webhook-action@master
         if: success()
         with:
-          url: https://app.devskills.co/api/assignment-status
+          url: ${{ env.result_url }}
           body: '{"assignmentRepository": "${{ env.github_repo }}","status": "passed"}'

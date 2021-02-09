@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "build": "composer install",
+    "build": "cd app && composer install",
     "start": "cd app && php artisan serve",
     "test": "cypress run"
   },
