@@ -14,7 +14,7 @@ Use it for setting up a take-home interview assignment or a portfolio project.
 - Laravel
 - Cypress
 - GitHub Actions
-
+- Test stack
 
 ---
 
