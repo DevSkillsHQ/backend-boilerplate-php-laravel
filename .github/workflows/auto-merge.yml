@@ -1,4 +1,4 @@
-name: Dependabot PR Handling
+name: Tests and Dependabot PR Handling
 
 on:
     pull_request:
@@ -8,7 +8,44 @@ on:
           - main
 
 jobs:
+  # Verifies the boilerplate can start and run in GitHub Actions environment
+  test-for-workflow:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run tests
+        uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: npm run start
+
+  # Verifies the boilerplate can start and run in codespace environment
+  test-for-codespaces:
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/devskillshq/boilerplate-base-image:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Start daemon
+        run: npm run start &
+      - name: Run tests
+        run: npm run test
+
   check-dependabot:
+    needs:
+      - test-for-workflow
+      - test-for-codespaces
     runs-on: ubuntu-20.04
     outputs:
       is_dependabot_pr: ${{ steps.dependabot-check.outputs.is_dependabot_pr }}
@@ -23,21 +60,8 @@ jobs:
             echo "::set-output name=is_dependabot_pr::false"
           fi
 
-  tests:
-    needs: check-dependabot
-    runs-on: ubuntu-20.04
-    if: ${{ needs.check-dependabot.outputs.is_dependabot_pr == 'true' }}
-    steps:
-        - name: Checkout
-          uses: actions/checkout@v1
-        - name: Run tests
-          uses: cypress-io/github-action@v2
-          with:
-            build: npm run build
-            start: npm run start
-    
   auto-merge:
-    needs: tests
+    needs: check-dependabot
     runs-on: ubuntu-20.04
     if: ${{ needs.check-dependabot.outputs.is_dependabot_pr == 'true' }}
     steps:
