@@ -1,0 +1,66 @@
+name: Dependabot PR Handling
+
+on:
+    pull_request:
+      types: [opened, reopened]
+      branches:
+          - master
+          - main
+
+jobs:
+  check-dependabot:
+    runs-on: ubuntu-20.04
+    outputs:
+      is_dependabot_pr: ${{ steps.dependabot-check.outputs.is_dependabot_pr }}
+    steps:
+      - id: dependabot-check
+        name: Check if PR is from Dependabot
+        run: |
+          echo "PR author: ${{ github.event.pull_request.user.login }}"
+          if [[ "${{ github.event.pull_request.user.login }}" == "dependabot[bot]" || "${{ github.event.pull_request.user.login }}" == "dependabot-preview[bot]" ]]; then
+            echo "::set-output name=is_dependabot_pr::true"
+          else
+            echo "::set-output name=is_dependabot_pr::false"
+          fi
+
+  tests:
+    needs: check-dependabot
+    runs-on: ubuntu-20.04
+    if: ${{ needs.check-dependabot.outputs.is_dependabot_pr == 'true' }}
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Run tests
+          uses: cypress-io/github-action@v2
+          with:
+            build: npm run build
+            start: npm run start
+    
+  auto-merge:
+    needs: tests
+    runs-on: ubuntu-20.04
+    if: ${{ needs.check-dependabot.outputs.is_dependabot_pr == 'true' }}
+    steps:
+      - name: Merge pull request
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pull_number = context.payload.pull_request.number;
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pull_number
+            });
+
+      - name: Delete branch
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const branch_name = context.payload.pull_request.head.ref;
+            await github.rest.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/' + branch_name
+            });
