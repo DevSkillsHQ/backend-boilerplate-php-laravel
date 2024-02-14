@@ -9,32 +9,23 @@ on:
       - '!main'
 jobs:
   tests:
+    permissions:
+      contents: read
+      packages: read
     runs-on: ubuntu-20.04
+    container:
+      image: ghcr.io/devskillshq/boilerplate-base-image:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Fetch apiUrl
-        run: echo ::set-output name=apiUrl::$(jq -r .env.apiUrl cypress.json)/ping
-        id: fetchApiUrl
+        uses: actions/checkout@v4
+      - name: install
+        run: npm install
+      - name: build
+        run: npm run build
+      - name: Start daemon
+        run: npm run start &
       - name: Run tests
-        uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-          start: npm run start
-          wait-on: ${{ steps.fetchApiUrl.outputs.apiUrl }}
-      - name: Set result_url env var
-        if: always()
-        run: echo "result_url=http://mockbin.com/request" >> $GITHUB_ENV
-      - name: Set github_repo env var
-        if: always()
-        run: echo "github_repo=$GITHUB_REPOSITORY" >> $GITHUB_ENV
-      - uses: joelwmale/webhook-action@master
-        if: failure()
-        with:
-          url: ${{ env.result_url }}
-          body: '{"assignmentRepository": "${{ env.github_repo }}","status": "failed"}'
-      - uses: joelwmale/webhook-action@master
-        if: success()
-        with:
-          url: ${{ env.result_url }}
-          body: '{"assignmentRepository": "${{ env.github_repo }}","status": "passed"}'
+        run: npm run test
