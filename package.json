@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "cd app && composer update && composer install",
-    "start": "cd app && php artisan serve --host=localhost --port=8000",
+    "start": "cd app && php artisan serve",
     "test": "cypress run"
   },
   "devDependencies": {
