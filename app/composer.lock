@@ -3331,16 +3331,16 @@
         },
         {
             "name": "symfony/error-handler",
-            "version": "v6.4.7",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/error-handler.git",
-                "reference": "667a072466c6a53827ed7b119af93806b884cbb3"
+                "reference": "ef836152bf13472dc5fb5b08b0c0c4cfeddc0fcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/error-handler/zipball/667a072466c6a53827ed7b119af93806b884cbb3",
-                "reference": "667a072466c6a53827ed7b119af93806b884cbb3",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/ef836152bf13472dc5fb5b08b0c0c4cfeddc0fcc",
+                "reference": "ef836152bf13472dc5fb5b08b0c0c4cfeddc0fcc",
                 "shasum": ""
             },
             "require": {
@@ -3386,7 +3386,7 @@
             "description": "Provides tools to manage errors and ease debugging PHP code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/error-handler/tree/v6.4.7"
+                "source": "https://github.com/symfony/error-handler/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -3402,7 +3402,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T09:22:46+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -3703,16 +3703,16 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v6.4.7",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "b7b5e6cdef670a0c82d015a966ffc7e855861a98"
+                "reference": "6c519aa3f32adcfd1d1f18d923f6b227d9acf3c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/b7b5e6cdef670a0c82d015a966ffc7e855861a98",
-                "reference": "b7b5e6cdef670a0c82d015a966ffc7e855861a98",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/6c519aa3f32adcfd1d1f18d923f6b227d9acf3c1",
+                "reference": "6c519aa3f32adcfd1d1f18d923f6b227d9acf3c1",
                 "shasum": ""
             },
             "require": {
@@ -3797,7 +3797,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v6.4.7"
+                "source": "https://github.com/symfony/http-kernel/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -3813,20 +3813,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-29T11:24:44+00:00"
+            "time": "2024-06-02T16:06:25+00:00"
         },
         {
             "name": "symfony/mailer",
-            "version": "v6.4.7",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "2c446d4e446995bed983c0b5bb9ff837e8de7dbd"
+                "reference": "76326421d44c07f7824b19487cfbf87870b37efc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/2c446d4e446995bed983c0b5bb9ff837e8de7dbd",
-                "reference": "2c446d4e446995bed983c0b5bb9ff837e8de7dbd",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/76326421d44c07f7824b19487cfbf87870b37efc",
+                "reference": "76326421d44c07f7824b19487cfbf87870b37efc",
                 "shasum": ""
             },
             "require": {
@@ -3877,7 +3877,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailer/tree/v6.4.7"
+                "source": "https://github.com/symfony/mailer/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -3893,7 +3893,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T09:22:46+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "symfony/mime",
@@ -7624,22 +7624,22 @@
         },
         {
             "name": "spatie/flare-client-php",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/flare-client-php.git",
-                "reference": "220a7c8745e9fa427d54099f47147c4b97fe6462"
+                "reference": "097040ff51e660e0f6fc863684ac4b02c93fa234"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/220a7c8745e9fa427d54099f47147c4b97fe6462",
-                "reference": "220a7c8745e9fa427d54099f47147c4b97fe6462",
+                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/097040ff51e660e0f6fc863684ac4b02c93fa234",
+                "reference": "097040ff51e660e0f6fc863684ac4b02c93fa234",
                 "shasum": ""
             },
             "require": {
                 "illuminate/pipeline": "^8.0|^9.0|^10.0|^11.0",
                 "php": "^8.0",
-                "spatie/backtrace": "^1.5.2",
+                "spatie/backtrace": "^1.6.1",
                 "symfony/http-foundation": "^5.2|^6.0|^7.0",
                 "symfony/mime": "^5.2|^6.0|^7.0",
                 "symfony/process": "^5.2|^6.0|^7.0",
@@ -7681,7 +7681,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/flare-client-php/issues",
-                "source": "https://github.com/spatie/flare-client-php/tree/1.6.0"
+                "source": "https://github.com/spatie/flare-client-php/tree/1.7.0"
             },
             "funding": [
                 {
@@ -7689,7 +7689,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-22T09:45:39+00:00"
+            "time": "2024-06-12T14:39:14+00:00"
         },
         {
             "name": "spatie/ignition",
