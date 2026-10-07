@@ -3,17 +3,27 @@ updates:
   - package-ecosystem: "npm"
     directory: "/app"
     schedule:
-      interval: "daily"
-    labels:
-      - "npm"
-      - "dependencies"
-
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
   - package-ecosystem: "composer"
     directory: "/app"
     schedule:
-      interval: "daily"
-    labels:
-      - "dependencies"
-      - "php"
-    allow:
-      - dependency-type: "all"
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      laravel:
+        patterns:
+          - "laravel/*"
+          - "illuminate/*"
+          - "symfony/*"
+        update-types:
+          - "major"
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
